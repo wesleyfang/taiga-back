@@ -1,5 +1,9 @@
 # Changelog #
 
+## 3.1.0 ¿¿?? (¿¿??)
+
+### Features
+- Duplicate project: new endpoint in the projects API that allows create a new project based on the structure of another (status, tags, colors, default values...)
 
 ## 3.0.0 Stellaria Borealis (2016-10-02)
 

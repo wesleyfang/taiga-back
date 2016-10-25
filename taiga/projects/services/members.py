@@ -16,10 +16,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from taiga.base.utils import db, text
+from taiga.base.utils import db
 from django.utils.translation import ugettext as _
 
 from .. import models
+
 
 def get_members_from_bulk(bulk_data, **additional_fields):
     """Convert `bulk_data` into a list of members.
@@ -69,9 +70,9 @@ def project_has_valid_admins(project, exclude_user=None):
 def can_user_leave_project(user, project):
     membership = project.memberships.get(user=user)
     if not membership.is_admin:
-         return True
+        return True
 
-    #The user can't leave if is the real owner of the project
+    # The user can't leave if is the real owner of the project
     if project.owner == user:
         return False
 
@@ -116,7 +117,7 @@ def check_if_project_can_have_more_memberships(project, total_new_memberships):
     """
     if project.owner is None:
         return False, _("Project without owner")
-        
+
     if project.is_private:
         total_memberships = project.memberships.count() + total_new_memberships
         max_memberships = project.owner.max_memberships_private_projects
